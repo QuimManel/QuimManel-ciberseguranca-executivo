@@ -25,9 +25,8 @@ nav li button{all:unset;cursor:pointer;display:flex;gap:10px;align-items:flex-st
 nav li button:hover{background:var(--soft)}
 nav li button.on{background:var(--ink);color:#fff}
 nav .n{flex:0 0 22px;height:22px;border:1.5px solid currentColor;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700}
-nav .done .n{background:currentColor}
-nav .done .n span{color:var(--paper)}
-nav li button.on.done .n span{color:var(--ink)}
+nav .done .n{background:var(--line);border-color:var(--line)}
+nav .done .n span{color:var(--ink)}
 nav .t small{display:block;font-size:12px;opacity:.7}
 main{padding:40px clamp(16px,5vw,64px) 80px;max-width:920px}
 section{display:none;animation:f .3s}
@@ -84,12 +83,40 @@ label{font-weight:600;font-size:14px;display:block;margin:10px 0 4px}
 #cert{display:none}
 .mob{display:none}
 @media (max-width:860px){
+  body{font-size:15px}
   .wrap{grid-template-columns:1fr}
-  aside{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}
-  nav{display:none} nav.open{display:block}
-  .mob{display:inline-block;margin-top:6px}
-  main{padding-top:24px}
+  aside{position:sticky;top:0;z-index:5;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:12px 14px 10px}
+  .brand{display:none}
+  .title{font-size:16px;margin:0 0 8px}
+  .progtxt{display:none}
+  .prog{height:5px}
+  nav{display:block;margin-top:10px}
+  nav ol{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+  nav li{flex:0 0 auto}
+  nav li button{padding:0;width:auto;border-radius:50%}
+  nav li button:hover{background:transparent}
+  nav li button.on{background:transparent;color:var(--ink)}
+  nav li button.on .n{background:var(--ink);color:#fff}
+  nav li button.on .n span{color:#fff}
+  nav .n{flex-basis:30px;width:30px;height:30px;font-size:13px}
+  nav .t{display:none}
+  .mob{display:none!important}
+  main{padding:20px 14px 60px}
+  h1{font-size:24px}
+  h2{font-size:18px;margin-top:24px}
+  .lead{font-size:16px}
+  .quote{font-size:16px;padding:12px 14px}
+  .card{padding:14px}
+  .big{font-size:26px}
+  .grid2{grid-template-columns:1fr 1fr;gap:8px}
+  .tile{padding:10px 12px;font-size:14px}
+  table{display:block;overflow-x:auto;font-size:13.5px}
+  th,td{padding:7px 9px}
+  .tl b{min-width:0;display:block}
+  .foot{position:sticky;bottom:0;background:var(--bg);padding:10px 0;margin-top:24px}
+  .foot .btn{padding:9px 12px;font-size:14px}
 }
+@media (max-width:420px){ .grid2{grid-template-columns:1fr} }
 @media print{
   body{background:#fff}
   .wrap>*{display:none!important}
@@ -371,7 +398,7 @@ const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAl
 // NAV
 function renderNav(){
   $("#navlist").innerHTML = UNITS.map((u,i)=>`<li><button data-go="${i}" class="${i===S.cur?'on':''} ${S.done.includes(i)?'done':''}">
-    <span class="n"><span>${i===0?'i':i}</span></span><span class="t">${u[0]}<small>${u[1]}</small></span></button></li>`).join("");
+    <span class="n"><span>${i}</span></span><span class="t">${u[0]}<small>${u[1]}</small></span></button></li>`).join("");
   const n = S.done.filter(i=>i>0).length;
   $("#bar").style.width = (n/7*100)+"%";
   $("#ptxt").textContent = `${n} de 7 unidades concluídas`;
