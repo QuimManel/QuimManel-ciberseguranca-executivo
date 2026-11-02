@@ -31,4 +31,4 @@ Este módulo é a **modalidade de autoaprendizagem** da ação «Cibersegurança
 
 Material pedagógico; não constitui aconselhamento jurídico. Enquadramento legal atualizado a novembro de 2026 — confirmar no Diário da República e em [cncs.gov.pt](https://www.cncs.gov.pt/pt/myciber/) antes de cada edição.
 
-Autor: Joaquim Paulino
+Autor: Joaquim Paulino · 2Siglas — Formação e Investigação, Lda
